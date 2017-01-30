@@ -1,0 +1,21 @@
+{% extends 'product/base.html' %}
+
+{% block body %}
+{% if latest_product_list %}
+<h3>Все заказы:</h3>
+<ul>
+    <table class="table table-striped">
+        <tbody>
+
+    {% for product in latest_product_list %}
+        <tr><td>
+        <a href="/product/{{ product.id }}/">{{ product.name_product }}</a>
+         </td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</ul>
+{% else %}
+    <p>No product are available.</p>
+{% endif %}
+{% endblock %}

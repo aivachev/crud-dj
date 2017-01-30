@@ -1,0 +1,41 @@
+{% extends 'product/base.html' %}
+
+{% block body %}
+
+<h1>{{ object.name_product }}</h1>
+<ul>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <table class="table table-striped">
+   <thead>
+      <tr>
+         <td>Поле</td>
+         <td>Значение</td>
+      </tr>
+   </thead>
+        <tbody><tr>
+         <td>Дата доставки </td>
+         <td>{{ object.date_delivery }}</td>
+      </tr>
+      <tr>
+         <td>Количество продукта </td>
+         <td>{{ object.count_product }}</td>
+      </tr>
+      <tr>
+         <td>Адрес доставки </td>
+         <td>{{ object.destination_adress }}</td>
+      </tr>
+    <tr>
+         <td>Статус доставки </td>
+         <td>{{ object.status }}</td>
+      </tr>
+</tbody>
+</table>
+<form action="{% url 'product:update' object.id %}" style="display: inline-block">
+    <input type="submit" value="Изменить" style="margin:20px 0px 0px 20px">
+</form>
+<form action="{% url 'product:delete' object.id %}" style="display: inline-block">
+    <input type="submit" value="Удалить" style="margin:20px 0px 0px 20px">
+</form>
+</ul>
+
+{% endblock %}
